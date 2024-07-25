@@ -12,8 +12,7 @@ class Bskt extends StatefulWidget {
 }
 
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-    onPrimary: Colors.white,
-    primary: Colors.lightBlue,
+    foregroundColor: Colors.white, backgroundColor: Colors.lightBlue,
     minimumSize: Size(88, 36),
     padding: EdgeInsets.symmetric(horizontal: 60),
     shape: const RoundedRectangleBorder(

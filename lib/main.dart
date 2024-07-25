@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen()
       // routes: {
       //   "/": (context) => Homepage(),
-      //   "cartPage": (context) => CartPage(), // Tambahkan / pada rute CartPage
+      //   "cartPage": (context) => CartPage(),
       // },
     );
   }

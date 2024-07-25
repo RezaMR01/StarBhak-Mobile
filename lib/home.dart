@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:asemen/basket.dart';
 import 'package:asemen/date.dart';
+import 'package:asemen/profile.dart';
 
 
 void main() {
@@ -21,12 +22,23 @@ class _HomeState extends State<Home> {
     Home(),
     Bskt(),
     Date(),
+
   ];
    void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
 
       // Check the index and navigate to a new page
+      if (index == 0) {
+        // Kembali ke Home
+        Navigator.popUntil(context, (route) => route.isFirst);
+      } else {
+        // Handle navigasi ke halaman lain jika perlu
+        Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => _widgetOptions[index]),
+    );
+  }
       if (index == 1) {
         Navigator.push(
           context,
@@ -37,6 +49,12 @@ class _HomeState extends State<Home> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => Date()),
+        );
+      }
+      if (index == 3) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ProfilePage()),
         );
       }
     });
@@ -63,12 +81,24 @@ class _HomeState extends State<Home> {
             ),
           ),
           Flexible(
+            child: Text(
+              "Starbhak Mart",
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            )),
+          Flexible(
             child: Container(
               margin: EdgeInsets.only(right: 30, top: 25),
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(50)),
               child: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                  context,
+                   MaterialPageRoute(builder: ((context) => ProfilePage())),
+                   );
+                },
                 icon: Icon(Icons.person),
               ),
             ),
@@ -226,6 +256,13 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(child: Text("Rp 50.000,00")),
+                              Container(
+                                margin: EdgeInsets.only(left: 30),
+                                child: Icon(
+                                  Icons.shopping_cart_checkout,
+                                  color: Colors.blue,
+                                ),
+                              )
                             ],
                           ),
                         ],
@@ -277,8 +314,16 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(child: Text("Rp 50.000,00")),
+                              Container(
+                                margin: EdgeInsets.only(left: 30),
+                                child: Icon(
+                                  Icons.shopping_cart_checkout,
+                                  color: Colors.blue,
+                                ),
+                              )
                             ],
                           ),
+                          
                         ],
                       ),
                     ),
@@ -335,6 +380,13 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(child: Text("Rp 50.000,00")),
+                              Container(
+                                margin: EdgeInsets.only(left: 30),
+                                child: Icon(
+                                  Icons.shopping_cart_checkout,
+                                  color: Colors.blue,
+                                ),
+                              )
                             ],
                           ),
                         ],
@@ -386,6 +438,13 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(child: Text("Rp 4.000,00")),
+                              Container(
+                                margin: EdgeInsets.only(left: 30),
+                                child: Icon(
+                                  Icons.shopping_cart_checkout,
+                                  color: Colors.blue,
+                                ),
+                              )
                             ],
                           ),
                         ],
@@ -443,6 +502,13 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(child: Text("Rp 50.000,00")),
+                              Container(
+                                margin: EdgeInsets.only(left: 30),
+                                child: Icon(
+                                  Icons.shopping_cart_checkout,
+                                  color: Colors.blue,
+                                ),
+                              )
                             ],
                           ),
                         ],
@@ -494,6 +560,14 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Container(child: Text("Rp 4.000,00")),
+                              Container(
+                                margin: EdgeInsets.only(left: 20),
+                                child: Icon(
+                                  Icons.shopping_cart_checkout,
+                                  color: Colors.blue,
+                                  
+                                ),
+                              )
                             ],
                           ),
                         ],
@@ -520,7 +594,7 @@ class _HomeState extends State<Home> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.post_add_outlined),
-            label: 'School',
+            label: 'Data',
           ),
         ],
         currentIndex: _selectedIndex,
